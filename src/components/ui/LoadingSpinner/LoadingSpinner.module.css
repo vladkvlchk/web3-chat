@@ -1,0 +1,63 @@
+/* LoadingSpinner.css */
+.spinnerContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.waveSpinner {
+  display: flex;
+  gap: 8px;
+}
+
+.waveSpinner span {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background-color: black;
+  border-radius: 50%;
+  animation: wave 1.2s infinite ease-in-out;
+}
+
+.waveSpinner span:nth-child(1) {
+  background-color: gold;
+  animation-delay: -0.4s;
+}
+
+.waveSpinner span:nth-child(2) {
+  background-color: blue;
+  animation-delay: -0.3s;
+}
+
+.waveSpinner span:nth-child(3) {
+  background-color: greenyellow;
+  animation-delay: -0.2s;
+}
+
+.waveSpinner span:nth-child(4) {
+  background-color: red;
+  animation-delay: -0.1s;
+}
+
+.waveSpinner span:nth-child(5) {
+  background-color: violet;
+  animation-delay: 0s;
+}
+
+@keyframes wave {
+  0%,
+  80%,
+  100% {
+    transform: scale(0);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.loadingText {
+  margin-top: 16px;
+}
