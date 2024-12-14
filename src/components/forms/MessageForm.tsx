@@ -29,7 +29,7 @@ export const MessageForm: FC = () => {
   const isSubmitDisabled = !inputValue || !isConnected;
 
   return (
-    <form className="flex gap-2 w-full justify-center max-w-5xl">
+    <form className="flex gap-2 w-full justify-center max-w-5xl my-2">
       <Input
         className="self-end justify-self-end"
         value={inputValue}
