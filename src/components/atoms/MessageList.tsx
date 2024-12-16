@@ -44,7 +44,8 @@ export const MessageList: FC = () => {
         messages.map((msg: IMessage, index: number) => (
           <MessageItem
             key={index}
-            sender={msg.sender === address ? "me" : msg.sender}
+            sender={msg.sender}
+            isSenderMe={msg.sender === address}
             text={msg.text}
           />
         ))
