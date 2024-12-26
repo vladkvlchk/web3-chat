@@ -21,7 +21,7 @@ export const useGetAllMessages = ({ ulRef }) => {
     if (ulRef && "current" in ulRef) {
       ulRef.current?.scrollTo(0, ulRef.current?.scrollHeight);
     }
-  }, [data]);
+  }, [data, ulRef]);
 
   return {
     messages: (data as IMessage[]) || [],
