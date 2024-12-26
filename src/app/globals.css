@@ -70,3 +70,20 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 4px; /* Slightly wider for better visibility */
+  background: rgba(
+    0,
+    0,
+    0,
+    0.05
+  ); /* Transparent background for a subtle look */
+  border-radius: 10px; /* Rounded edges for a soft look */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #00000080;
+  border-radius: 10px;
+}
