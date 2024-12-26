@@ -1,2 +1,3 @@
-export * from "./useGetAllMessages.hook";
-export * from "./useSendMessage.hook";
+export * from "./useGetAllMessages";
+export * from "./useSendMessage";
+export * from "./useWatchMessagesFromEvent";

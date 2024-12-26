@@ -1,8 +1,44 @@
 export const contractConfig = {
-  address: "0x3240Ef7f8922128621983F8Dbc1067263A1E8A06" as `0x${string}`,
+  address: "0xe2b4587bffa9473dbb99f5894c62f03aafb035c4" as `0x${string}`,
   abi: [
     {
-      inputs: [{ internalType: "string", name: "_text", type: "string" }],
+      inputs: [],
+      name: "messages",
+      outputs: [
+        {
+          components: [
+            {
+              internalType: "address",
+              name: "sender",
+              type: "address",
+            },
+            {
+              internalType: "string",
+              name: "text",
+              type: "string",
+            },
+            {
+              internalType: "uint256",
+              name: "timestamp",
+              type: "uint256",
+            },
+          ],
+          internalType: "struct MessageBoard.Message[]",
+          name: "",
+          type: "tuple[]",
+        },
+      ],
+      stateMutability: "view",
+      type: "function",
+    },
+    {
+      inputs: [
+        {
+          internalType: "string",
+          name: "_text",
+          type: "string",
+        },
+      ],
       name: "storeMessage",
       outputs: [],
       stateMutability: "nonpayable",
@@ -14,8 +50,21 @@ export const contractConfig = {
       outputs: [
         {
           components: [
-            { internalType: "address", name: "sender", type: "address" },
-            { internalType: "string", name: "text", type: "string" },
+            {
+              internalType: "address",
+              name: "sender",
+              type: "address",
+            },
+            {
+              internalType: "string",
+              name: "text",
+              type: "string",
+            },
+            {
+              internalType: "uint256",
+              name: "timestamp",
+              type: "uint256",
+            },
           ],
           internalType: "struct MessageBoard.Message[]",
           name: "",
@@ -24,6 +73,36 @@ export const contractConfig = {
       ],
       stateMutability: "view",
       type: "function",
+    },
+    {
+      anonymous: false,
+      inputs: [
+        {
+          components: [
+            {
+              internalType: "address",
+              name: "sender",
+              type: "address",
+            },
+            {
+              internalType: "string",
+              name: "text",
+              type: "string",
+            },
+            {
+              internalType: "uint256",
+              name: "timestamp",
+              type: "uint256",
+            },
+          ],
+          indexed: false,
+          internalType: "struct MessageBoard.Message",
+          name: "message",
+          type: "tuple",
+        },
+      ],
+      name: "NewMessage",
+      type: "event",
     },
   ],
 };
