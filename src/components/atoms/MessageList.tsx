@@ -47,6 +47,7 @@ export const MessageList: FC = () => {
             <MessageItem
               key={index}
               sender={msg.sender === address ? "me" : msg.sender}
+              isSenderMe={msg.sender === address}
               text={msg.text}
             />
           ))
