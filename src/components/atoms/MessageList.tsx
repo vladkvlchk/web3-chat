@@ -40,7 +40,7 @@ export const MessageList: FC = () => {
       <ul
         ref={ulRef}
         onScroll={handleScroll}
-        className="relative flex-1 items-start w-full max-w-5xl overflow-scroll scrollbar-none"
+        className="relative flex-1 items-start w-full max-w-5xl overflow-y-scroll pr-1"
       >
         {allMessages && allMessages.length ? (
           allMessages.map((msg: IMessage, index: number) => (
