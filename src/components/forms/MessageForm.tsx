@@ -1,6 +1,6 @@
 "use client";
 
-import { ChangeEvent, useState, FC, KeyboardEvent, FormEvent } from "react";
+import React, { ChangeEvent, useState, FC, KeyboardEvent } from "react";
 import { useAccount } from "wagmi";
 import toast from "react-hot-toast";
 
@@ -31,7 +31,7 @@ export const MessageForm: FC = () => {
     if (event.key === "Enter") send();
   };
 
-  const onSubmit = (event: any) => {
+  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     send();
   };

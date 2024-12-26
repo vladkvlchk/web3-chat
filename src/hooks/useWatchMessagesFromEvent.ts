@@ -29,7 +29,7 @@ export const useWatchMessagesFromEvent = ({ ulRef }) => {
     ...contractConfig,
     eventName: "NewMessage",
     onLogs(logs) {
-    //   @ts-ignore
+      //   @ts-ignore
       setMessagesFromEvent((prev) => [...prev, { ...logs[0].args.message }]);
     },
   });
@@ -42,7 +42,7 @@ export const useWatchMessagesFromEvent = ({ ulRef }) => {
       if (isUserAtBottom) ulRef.current.scrollTo(0, scrollHeight);
       if (!isUserAtBottom) setUnreadAmount((prev) => prev + 1);
     }
-  }, [messagesFromEvent]);
+  }, [messagesFromEvent, ulRef]);
 
   return { data: messagesFromEvent, unreadAmount, onResetUnread, handleScroll };
 };

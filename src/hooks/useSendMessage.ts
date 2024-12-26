@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import {
   useAccount,
   useWaitForTransactionReceipt,
@@ -9,7 +10,6 @@ import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 
 import { contractConfig } from "@/utils/configs/contractConfig";
-import { useEffect, useRef } from "react";
 
 export const useSendMessage = () => {
   const { address: account } = useAccount();
