@@ -14,10 +14,10 @@ export const MessageForm: FC = () => {
   const { mutateAsync } = useSendMessage();
 
   const send = async () => {
-    if (!inputValue) return;
+    if (!inputValue.trim()) return;
 
     try {
-      await mutateAsync(inputValue);
+      await mutateAsync(inputValue.trim());
       setInputValue("");
     } catch (error) {
       toast.error("Something wrong");
@@ -36,7 +36,7 @@ export const MessageForm: FC = () => {
     send();
   };
 
-  const isSubmitDisabled = !inputValue || !isConnected;
+  const isSubmitDisabled = !inputValue.trim() || !isConnected;
 
   return (
     <>
