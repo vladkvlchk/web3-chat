@@ -1,14 +1,13 @@
 "use client";
 
 import { FC, useRef } from "react";
-import { useAccount } from "wagmi";
 
-import { IMessage } from "@/types";
 import { useGetAllMessages, useWatchMessagesFromEvent } from "@/hooks";
-import { Button, LoadingSpinner, MessageItem } from "@/components";
+import { Button, LoadingSpinner } from "@/components";
+import { splitByDays2 } from "@/utils/helper/splitByDays";
+import { DayMessageGroup } from "./DayMessageGroup";
 
 export const MessageList: FC = () => {
-  const { address } = useAccount();
   const ulRef = useRef<HTMLUListElement | null>(null);
 
   const { messages, isError, isLoading } = useGetAllMessages({ ulRef });
@@ -20,6 +19,9 @@ export const MessageList: FC = () => {
   } = useWatchMessagesFromEvent({ ulRef });
 
   const allMessages = messages.concat(messagesFromEvent);
+  const groupedByDays = splitByDays2(allMessages, {
+    getTimestamp: (item) => item.timestamp,
+  });
 
   if (isError)
     return (
@@ -42,13 +44,12 @@ export const MessageList: FC = () => {
         onScroll={handleScroll}
         className="relative flex-1 items-start w-full max-w-5xl overflow-y-scroll pr-1"
       >
-        {allMessages && allMessages.length ? (
-          allMessages.map((msg: IMessage, index: number) => (
-            <MessageItem
-              key={index}
-              sender={msg.sender}
-              isSenderMe={msg.sender === address}
-              text={msg.text}
+        {groupedByDays.length ? (
+          groupedByDays.map((group) => (
+            <DayMessageGroup
+              key={group.date}
+              date={group.date}
+              messages={group.content}
             />
           ))
         ) : (

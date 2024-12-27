@@ -9,6 +9,7 @@ export const MessageItem: FC<MessageItemProps> = ({
   sender,
   text,
   isSenderMe = false,
+  hh_mm,
 }) => {
   return (
     <li
@@ -24,6 +25,7 @@ export const MessageItem: FC<MessageItemProps> = ({
       >
         {text}
       </p>
+      <p className="self-center text-sm opacity-60">{hh_mm}</p>
     </li>
   );
 };
