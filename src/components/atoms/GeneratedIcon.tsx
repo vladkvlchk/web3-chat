@@ -1,7 +1,8 @@
 "use client";
 
-import { AVATAR_PIXELS } from "@/utils/constants";
 import React, { FC, useRef, useEffect } from "react";
+
+import { AVATAR_PIXELS } from "@/utils/constants";
 
 const randseed = new Array(4); // Xorshift: [x, y, z, w] 32 bit values
 
