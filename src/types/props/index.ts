@@ -1,2 +1,3 @@
-export * from "./AvatarWithHoverCardProps.type";
-export * from "./MessageItemProps.type";
+export * from "./AvatarWithHoverCardProps";
+export * from "./MessageItemProps";
+export * from "./GeneratedIconProps";
