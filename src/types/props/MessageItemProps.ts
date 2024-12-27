@@ -4,4 +4,5 @@ export interface MessageItemProps {
   sender: TAddress;
   text: string;
   isSenderMe?: boolean;
+  hh_mm: `${number}:${number}`;
 }

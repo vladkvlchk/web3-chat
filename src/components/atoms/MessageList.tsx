@@ -6,6 +6,7 @@ import { useAccount } from "wagmi";
 import { IMessage } from "@/types";
 import { useGetAllMessages, useWatchMessagesFromEvent } from "@/hooks";
 import { Button, LoadingSpinner, MessageItem } from "@/components";
+import { formatTimestampToHHMM } from "@/utils/helper";
 
 export const MessageList: FC = () => {
   const { address } = useAccount();
@@ -49,6 +50,7 @@ export const MessageList: FC = () => {
               sender={msg.sender}
               isSenderMe={msg.sender === address}
               text={msg.text}
+              hh_mm={formatTimestampToHHMM(msg.timestamp)}
             />
           ))
         ) : (
