@@ -73,14 +73,14 @@ body {
 
 /* Scrollbar */
 ::-webkit-scrollbar {
-  width: 4px; /* Slightly wider for better visibility */
+  width: 4px; 
   background: rgba(
     0,
     0,
     0,
     0.05
-  ); /* Transparent background for a subtle look */
-  border-radius: 10px; /* Rounded edges for a soft look */
+  ); 
+  border-radius: 10px; 
 }
 
 ::-webkit-scrollbar-thumb {
