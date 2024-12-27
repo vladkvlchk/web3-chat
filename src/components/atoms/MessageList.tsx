@@ -42,7 +42,7 @@ export const MessageList: FC = () => {
       <ul
         ref={ulRef}
         onScroll={handleScroll}
-        className="relative flex-1 items-start w-full max-w-5xl overflow-y-scroll pr-1"
+        className="relative flex-1 items-start w-full overflow-y-scroll px-[calc((100%-1024px)/2)]"
       >
         {groupedByDays.length ? (
           groupedByDays.map((group) => (
