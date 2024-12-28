@@ -2,7 +2,7 @@
 
 import React, { ChangeEvent, useState, FC, KeyboardEvent } from "react";
 import { useAccount } from "wagmi";
-import toast from "react-hot-toast";
+import { toast } from "sonner"
 
 import { Button, Input } from "@/components/ui";
 import { useSendMessage } from "@/hooks";

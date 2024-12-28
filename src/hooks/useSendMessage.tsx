@@ -7,9 +7,11 @@ import {
   useWriteContract,
 } from "wagmi";
 import { useMutation } from "@tanstack/react-query";
-import toast from "react-hot-toast";
+import { toast } from "sonner";
 
 import { contractConfig } from "@/utils/configs/contractConfig";
+import { ToastAction } from "@/components";
+import { ExternalLink } from "lucide-react";
 
 export const useSendMessage = () => {
   const { address: account } = useAccount();
@@ -17,15 +19,31 @@ export const useSendMessage = () => {
   const { isLoading: isConfirming, isSuccess: isConfirmed } =
     useWaitForTransactionReceipt({ hash });
 
-  const toastIdRef = useRef<string | undefined>(undefined);
+  const toastIdRef = useRef(undefined);
 
   useEffect(() => {
     if (isConfirming && !toastIdRef.current) {
-      toastIdRef.current = toast.loading("Confirming " + hash);
+      toastIdRef.current = toast.loading("Confirming...", {
+        action: hash ? (
+          <ToastAction
+            altText={"view on explorer"}
+            style={{ position: "absolute", right: "8px" }}
+          >
+            <a
+              href={`https://sepolia.etherscan.io/tx/${hash}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline flex gap-1"
+            >
+              View on Explorer <ExternalLink size={16} />
+            </a>
+          </ToastAction>
+        ) : undefined,
+      });
     }
 
     if (isConfirmed && toastIdRef.current) {
-      toast.success("Tx confirmed " + hash);
+      toast.success("Tx confirmed");
       toast.dismiss(toastIdRef.current);
       toastIdRef.current = undefined;
     }
