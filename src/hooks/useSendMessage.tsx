@@ -8,10 +8,10 @@ import {
 } from "wagmi";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
+import { ExternalLink } from "lucide-react";
 
 import { contractConfig } from "@/utils/configs/contractConfig";
 import { ToastAction } from "@/components";
-import { ExternalLink } from "lucide-react";
 
 export const useSendMessage = () => {
   const { address: account } = useAccount();
@@ -24,21 +24,7 @@ export const useSendMessage = () => {
   useEffect(() => {
     if (isConfirming && !toastIdRef.current) {
       toastIdRef.current = toast.loading("Confirming...", {
-        action: hash ? (
-          <ToastAction
-            altText={"view on explorer"}
-            style={{ position: "absolute", right: "8px" }}
-          >
-            <a
-              href={`https://sepolia.etherscan.io/tx/${hash}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline flex gap-1"
-            >
-              View on Explorer <ExternalLink size={16} />
-            </a>
-          </ToastAction>
-        ) : undefined,
+        action: hash ? <ToastButton hash={hash} /> : undefined,
       });
     }
 
@@ -63,3 +49,21 @@ export const useSendMessage = () => {
     },
   });
 };
+
+function ToastButton({ hash }: { hash: string }) {
+  return (
+    <ToastAction
+      altText={"view on explorer"}
+      style={{ position: "absolute", right: "8px" }}
+    >
+      <a
+        href={`https://sepolia.etherscan.io/tx/${hash}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="underline flex gap-1"
+      >
+        View on Explorer <ExternalLink size={16} />
+      </a>
+    </ToastAction>
+  );
+}

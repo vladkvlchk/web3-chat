@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import { Toaster } from "@/components/ui/sonner";
 
 import "./globals.css";
-import { Providers } from "./Providers";
+import { Toaster, Providers } from "@/components";
 
 export const metadata: Metadata = {
   title: "Web3 Chat",
@@ -15,7 +14,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`antialiased`}>
         <Providers>{children}</Providers>
         <Toaster position="bottom-right" />
