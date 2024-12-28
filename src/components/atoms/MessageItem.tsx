@@ -3,7 +3,7 @@
 import { FC } from "react";
 
 import type { MessageItemProps } from "@/types";
-import { AvatarWithHoverCard } from "@/components";
+import { AvatarWithDropdown } from "@/components";
 
 export const MessageItem: FC<MessageItemProps> = ({
   sender,
@@ -17,7 +17,7 @@ export const MessageItem: FC<MessageItemProps> = ({
         isSenderMe ? "flex-row-reverse" : ""
       }`}
     >
-      <AvatarWithHoverCard sender={sender} />
+      <AvatarWithDropdown sender={sender} />
       <p
         className={`break-words max-w-[calc(100%-130px)] ${
           isSenderMe ? "bg-blue-200" : "bg-blue-100"

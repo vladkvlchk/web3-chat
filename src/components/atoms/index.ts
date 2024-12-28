@@ -1,4 +1,4 @@
 export * from "./GeneratedIcon";
-export * from "./AvatarWithHoverCard";
+export * from "./AvatarWithDropdown";
 export * from "./MessageItem";
 export * from "./MessageList";
