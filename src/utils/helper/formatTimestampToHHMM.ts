@@ -1,6 +1,6 @@
 export function formatTimestampToHHMM(
   timestamp: number
-): `${number}:${number}` {
+): `${string}:${string}` {
   const date = new Date(Number(timestamp) * 1000);
 
   const hours = date.getHours();
@@ -9,5 +9,5 @@ export function formatTimestampToHHMM(
   const formattedHours = hours.toString().padStart(2, "0");
   const formattedMinutes = minutes.toString().padStart(2, "0");
 
-  return `${+formattedHours}:${+formattedMinutes}`;
+  return `${formattedHours}:${formattedMinutes}`;
 }

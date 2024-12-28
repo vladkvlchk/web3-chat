@@ -37,7 +37,7 @@ export const useWatchMessagesFromEvent = ({ ulRef }) => {
   useEffect(() => {
     if (ulRef && "current" in ulRef && ulRef.current) {
       const { scrollTop, scrollHeight, clientHeight } = ulRef.current;
-      const isUserAtBottom = scrollTop + clientHeight >= scrollHeight - 70;
+      const isUserAtBottom = scrollTop + clientHeight >= scrollHeight - 100;
 
       if (isUserAtBottom) ulRef.current.scrollTo(0, scrollHeight);
       if (!isUserAtBottom) setUnreadAmount((prev) => prev + 1);
