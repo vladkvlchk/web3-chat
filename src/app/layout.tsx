@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Toaster } from "react-hot-toast";
+import { Toaster } from "@/components/ui/sonner";
 
 import "./globals.css";
 import { Providers } from "./Providers";
@@ -18,7 +18,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`antialiased`}>
         <Providers>{children}</Providers>
-        <Toaster position="bottom-right" reverseOrder={false} />
+        <Toaster position="bottom-right" />
       </body>
     </html>
   );
