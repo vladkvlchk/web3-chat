@@ -6,6 +6,7 @@ import { Toaster, Providers } from "@/components";
 export const metadata: Metadata = {
   title: "Web3 Chat",
   description: "Communicate using blockchain technologies",
+  icons: "/chat.png",
 };
 
 export default function RootLayout({
