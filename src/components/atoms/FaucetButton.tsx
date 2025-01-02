@@ -1,10 +1,7 @@
 "use client";
 
-import { FC, useEffect, useRef, useState } from "react";
+import { FC } from "react";
 import { Fuel } from "lucide-react";
-import axios from "axios";
-import { toast } from "sonner";
-import { useAccount, useWaitForTransactionReceipt } from "wagmi";
 
 import {
   Button,
@@ -15,54 +12,12 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-  ViewOnExplorerButton,
 } from "@/components";
 import { FAUCET } from "@/utils/constants";
+import { useFaucet } from "@/hooks";
 
 export const FaucetButton: FC = () => {
-  const { address } = useAccount();
-  const [faucetBalance, setFaucetBalance] = useState(null);
-  const [txHash, setTxHash] = useState(null);
-  const { isLoading: isConfirming, isSuccess: isConfirmed } =
-    useWaitForTransactionReceipt({ hash: txHash });
-
-  const toastIdRef = useRef(undefined);
-
-  const onGetTokens = async () => {
-    try {
-      const { data } = await axios.post("/api/faucet", { toAddress: address });
-      setTxHash(data.data.txHash);
-    } catch (error) {
-      toast.error(error.message || "Something wrong");
-    }
-  };
-
-  useEffect(() => {
-    const fetchFaucetBalance = async () => {
-      try {
-        const { data } = await axios.get("/api/faucet");
-        setFaucetBalance(data.data.balance);
-      } catch (error) {
-        toast.error(error.message || "Something wrong");
-      }
-    };
-
-    fetchFaucetBalance();
-  }, [isConfirmed]);
-
-  useEffect(() => {
-    if (isConfirming && !toastIdRef.current) {
-      toastIdRef.current = toast.loading("Sending tokens from the faucet...", {
-        action: txHash ? <ViewOnExplorerButton hash={txHash} /> : undefined,
-      });
-    }
-
-    if (isConfirmed && toastIdRef.current) {
-      toast.success("Tokens received");
-      toast.dismiss(toastIdRef.current);
-      toastIdRef.current = undefined;
-    }
-  }, [isConfirming, isConfirmed, txHash]);
+  const { txHash, faucetBalance, onGetTokens } = useFaucet();
 
   const isGetButtonDisabled =
     txHash || faucetBalance < FAUCET.LIMIT_ETH + FAUCET.FEE_SPREAD;

@@ -22,7 +22,7 @@ export async function GET() {
     const formattedBalance = ethers.formatEther(balance);
 
     return NextResponse.json({ data: { balance: formattedBalance } });
-  } catch (error: any) {
+  } catch (error: unknown) {
     return NextResponse.json(
       { error: "Something went wrong while fetching the wallet balance." },
       { status: 400 }
@@ -52,38 +52,10 @@ export async function POST(req: Request) {
       },
       { status: 200 }
     );
-  } catch (error: any) {
+  } catch (error: unknown) {
     return NextResponse.json(
       { error: "Something went wrong while fetching the wallet balance." },
       { status: 400 }
     );
   }
 }
-
-// export async function POST(req: NextApiRequest, res: NextApiResponse) {
-//   return res.status(200).json({ success: "Hello send tokens" });
-
-//   if (req.method === "POST") {
-//     const { toAddress, amount } = req.body;
-
-//     // if (!toAddress || !ethers.utils.isAddress(toAddress) || !amount) {
-//     //   return res.status(400).json({ error: 'Invalid input' });
-//     // }
-
-//     // try {
-//     //   const tx = {
-//     //     to: toAddress,
-//     //     value: ethers.utils.parseEther(amount),
-//     //   };
-
-//     //   const transactionResponse = await wallet.sendTransaction(tx);
-//     //   await transactionResponse.wait();
-
-//     //   return res.status(200).json({ success: true, transactionHash: transactionResponse.hash });
-//     // } catch (error) {
-//     //   return res.status(500).json({ error: 'Transaction failed', details: error.message });
-//     // }
-//   } else {
-//     return res.status(405).json({ error: "Method Not Allowed" });
-//   }
-// }

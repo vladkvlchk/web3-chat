@@ -3,9 +3,8 @@
 import { FC, useRef } from "react";
 
 import { useGetAllMessages, useWatchMessagesFromEvent } from "@/hooks";
-import { Button, LoadingSpinner } from "@/components";
+import { Button, LoadingSpinner, DayMessageGroup } from "@/components";
 import { splitByDays2 } from "@/utils/helper/splitByDays";
-import { DayMessageGroup } from "./DayMessageGroup";
 
 export const MessageList: FC = () => {
   const ulRef = useRef<HTMLUListElement | null>(null);
