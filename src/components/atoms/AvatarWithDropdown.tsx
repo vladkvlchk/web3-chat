@@ -12,9 +12,7 @@ import {
 } from "@/components";
 import { AvatarWithDropdownProps } from "@/types";
 
-export const AvatarWithDropdown: FC<AvatarWithDropdownProps> = ({
-  sender,
-}) => {
+export const AvatarWithDropdown: FC<AvatarWithDropdownProps> = ({ sender }) => {
   const [isCopyClicked, setIsCopyClicked] = useState<boolean>(false);
 
   const onClickCopy = () => {
